@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  todo_ex:
+    build: .
+    container_name: todo_ex
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:tcp://h2_db:1521/test
+      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=org.h2.Driver
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=
+      - SPRING_JPA_HIBERNATE_DDL-AUTO=update
+      - SPRING_JPA_DATABASE-PLATFORM=org.hibernate.dialect.H2Dialect
+      - SPRING_H2_CONSOLE_ENABLED=true
+      - SPRING_H2_CONSOLE_PATH=/h2-console
+    volumes:
+      - ./logs:/app/logs
+
+  h2db:
+    image: oscarfonts/h2
+    container_name: h2_db
+    ports:
+      - "9092:9092"
+    environment:
+       H2_OPTIONS: "-ifNotExists"
+    volumes:
+      - h2-data:/opt/h2-data
+
+volumes:
+  h2-data:
