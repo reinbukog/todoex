@@ -65,7 +65,9 @@ The `./run.sh` file facilitates the build and run procedure of the application.
 ```
 
 ### Tasks API ###
-CRUD operations for Tasks. Following are the sample requests
+CRUD operations for Tasks. Following are the sample requests:\
+
+Swagger: `http://localhost:8080/swagger-ui/index.html`
 * Create a new task. `POST /tasks`
   * Sample endpoint: `http://localhost:8080/tasks`
   * Sample request and response:
